@@ -1,0 +1,81 @@
+# IronForge CrossFit — Personalised Fitness & Diet Plan System
+
+A Vue 3 + TypeScript app that turns a 12-question onboarding flow into a personalised
+training and nutrition programme: TDEE/BMI calculation, macro targets, and a full
+7-day workout + diet plan across four goals (Weight Loss, Bulking, Cutting, Shredding).
+
+## Stack
+
+- **Vue 3** (Composition API, `<script setup>`)
+- **TypeScript**
+- **Vite**
+- **Pinia** — profile + exercise-completion state, persisted to `localStorage`
+- **Vue Router** — onboarding → dashboard → day detail → diet plan, with page transitions
+- Self-hosted fonts via `@fontsource` (Anton, Space Grotesk, Space Mono — no Google Fonts CDN request)
+- Custom design system (no UI framework) — see `src/style.css` for tokens
+
+## Interactive / visual features
+
+- **Exercise check-off tracking** — tap any exercise to mark it done; progress bars roll up per day and across the whole week (persisted locally)
+- Animated calorie gauge (sweeps in on load) and count-up numbers
+- Ambient ember particle background (canvas, respects `prefers-reduced-motion`)
+- Scroll-reveal animations on section entry (`v-reveal` directive)
+- Page transitions between routes
+- Hero photography (free-license Unsplash, equipment/environment shots) + custom
+  line-art equipment icons on the goal-selection cards
+
+## Getting started
+
+```bash
+npm install
+npm run dev
+```
+
+Build for production:
+
+```bash
+npm run build
+npm run preview
+```
+
+## How the calculations work
+
+- **BMR**: Mifflin-St Jeor equation, using age, gender, height and current weight.
+- **TDEE**: BMR × activity multiplier, derived from days-available-per-week and gym
+  experience (more training days / more experience → higher multiplier).
+- **Calorie target**: TDEE + a goal-specific delta (e.g. −500 kcal for Weight Loss,
+  +400 kcal for Bulking), matching the deficit/surplus ranges in the source spec.
+- **Macros**: protein set by g/kg bodyweight per goal (from the spec's "general rule"
+  for each programme), fat set by a derived g/kg ratio, carbs fill the remainder of
+  the calorie target.
+
+These are estimates for demonstration purposes — the app includes the same safety
+notice as the source spec: consult a healthcare professional before starting a new
+programme.
+
+## Project structure
+
+```
+src/
+  types.ts                  # shared TypeScript interfaces
+  composables/
+    useCalculator.ts        # BMR/TDEE/macro calculation logic
+  stores/
+    profile.ts               # Pinia store (user profile + derived results)
+  data/
+    programmes.json          # structured workout/diet content (4 programmes x 7 days)
+  views/
+    OnboardingView.vue       # 6-step onboarding wizard (12 data points)
+    DashboardView.vue        # calorie gauge, macro split, week overview
+    DayView.vue               # per-day workout detail
+    DietView.vue               # meal plan, foods to avoid, snacks/supplements
+  components/
+    GaugeChart.vue            # radial calorie-vs-TDEE gauge (signature visual)
+    MacroBars.vue              # protein/carb/fat breakdown
+```
+
+## Notes
+
+`programmes.json` was generated from a source content spec by a small parsing
+script (not included in the shipped app) rather than hand-transcribed, to keep
+the four full programmes accurate and consistent.
