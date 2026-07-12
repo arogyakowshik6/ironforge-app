@@ -64,7 +64,7 @@ const isSurplus = computed(() => props.delta > 0)
 
 <template>
   <div class="gauge">
-    <svg viewBox="0 0 200 116" class="gauge-svg">
+    <svg viewBox="0 0 200 116" class="gauge-svg" aria-hidden="true">
       <path d="M 26 100 A 74 74 0 0 1 174 100" fill="none" stroke="var(--surface-2)" stroke-width="10" stroke-linecap="round" />
       <path
         :d="arcPath"

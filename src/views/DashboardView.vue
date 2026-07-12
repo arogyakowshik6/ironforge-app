@@ -4,12 +4,18 @@ import { useProfileStore } from '../stores/profile'
 import GaugeChart from '../components/GaugeChart.vue'
 import MacroBars from '../components/MacroBars.vue'
 import AnimatedNumber from '../components/AnimatedNumber.vue'
+import EquipmentIcon from '../components/EquipmentIcon.vue'
 import { dashboardImage } from '../data/images'
 
 const store = useProfileStore()
 const profile = computed(() => store.profile!)
 const result = computed(() => store.result!)
 const programme = computed(() => store.programme!)
+
+const DAY_ICONS = ['barbell', 'dumbbell', 'kettlebell'] as const
+function dayIcon(dayNum: number) {
+  return DAY_ICONS[dayNum % DAY_ICONS.length]
+}
 
 function dayDone(day: number) {
   const p = store.dayProgress(day)
@@ -31,10 +37,17 @@ function dayDone(day: number) {
 
     <section class="progress-banner" v-reveal>
       <div class="progress-head">
-        <span>Week progress</span>
+        <span id="week-progress-label">Week progress</span>
         <span class="mono">{{ store.completedCount }} / {{ store.totalExercises }} exercises</span>
       </div>
-      <div class="progress-track">
+      <div
+        class="progress-track"
+        role="progressbar"
+        aria-labelledby="week-progress-label"
+        :aria-valuenow="store.weekProgressPct"
+        aria-valuemin="0"
+        aria-valuemax="100"
+      >
         <div class="progress-fill" :style="{ width: store.weekProgressPct + '%' }"></div>
       </div>
     </section>
@@ -76,6 +89,7 @@ function dayDone(day: number) {
           :class="{ rest: day.isRestDay, done: dayDone(day.day) }"
         >
           <span class="day-num mono">{{ String(day.day).padStart(2, '0') }}</span>
+          <EquipmentIcon v-if="!day.isRestDay" :kind="dayIcon(day.day)" class="day-icon" />
           <span class="day-name">{{ day.dayName }}</span>
           <span class="day-title">{{ day.title }}</span>
           <span v-if="day.isRestDay" class="rest-tag">Rest</span>
@@ -316,6 +330,13 @@ h2 {
 .day-num {
   color: var(--ember-soft);
   font-size: 0.75rem;
+}
+
+.day-icon {
+  width: 18px;
+  height: 18px;
+  color: var(--text-dim);
+  margin: 2px 0;
 }
 
 .day-name {

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { reactive, ref, computed } from 'vue'
+import { reactive, ref, computed, nextTick, watch } from 'vue'
 import { useRouter } from 'vue-router'
 import { useProfileStore } from '../stores/profile'
 import type { UserProfile } from '../types'
@@ -10,6 +10,7 @@ const router = useRouter()
 const store = useProfileStore()
 
 const step = ref(0)
+const panelHeading = ref<HTMLHeadingElement | null>(null)
 
 const form = reactive({
   name: '',
@@ -40,6 +41,19 @@ const canProceed = computed(() => {
   if (step.value === 0) return form.name.trim().length > 0 && form.age >= 16 && form.age <= 70
   if (step.value === 1) return form.heightCm > 0 && form.currentWeightKg > 0 && form.targetWeightKg > 0
   return true
+})
+
+const validationMessage = computed(() => {
+  if (canProceed.value) return ''
+  if (step.value === 0) return 'Enter a name and an age between 16 and 70 to continue.'
+  if (step.value === 1) return 'Enter valid height and weight values to continue.'
+  return ''
+})
+
+// Move focus to the step heading on every step change so screen reader
+// users get the new step announced, and keyboard users land somewhere useful.
+watch(step, () => {
+  nextTick(() => panelHeading.value?.focus())
 })
 
 function next() {
@@ -73,19 +87,21 @@ function submit() {
     </div>
 
     <div class="wizard" v-reveal>
-      <div class="progress">
-        <div
+      <ol class="progress" aria-label="Onboarding steps">
+        <li
           v-for="(s, i) in steps"
           :key="s.key"
           class="progress-step"
           :class="{ done: i < step, active: i === step }"
+          :aria-current="i === step ? 'step' : undefined"
         >
           <span class="dot"></span>
           <span class="label">{{ s.title }}</span>
-        </div>
-      </div>
+        </li>
+      </ol>
 
       <div class="panel">
+        <h2 ref="panelHeading" tabindex="-1" class="step-heading">{{ steps[step].title }}</h2>
         <!-- Step 0: identity -->
         <div v-if="step === 0" class="fields">
           <label class="field">
@@ -203,6 +219,7 @@ function submit() {
           {{ isLast ? 'Generate my plan' : 'Continue' }}
         </button>
       </div>
+      <p v-if="validationMessage" class="validation-msg" role="alert">{{ validationMessage }}</p>
     </div>
   </div>
 </template>
@@ -282,6 +299,8 @@ h1 {
   justify-content: space-between;
   margin-bottom: 32px;
   gap: 4px;
+  list-style: none;
+  padding: 0;
 }
 
 .progress-step {
@@ -330,6 +349,30 @@ h1 {
   border-radius: var(--radius);
   padding: clamp(20px, 4vw, 36px);
   min-height: 260px;
+}
+
+.step-heading {
+  font-size: 0.78rem;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ember-soft);
+  margin-bottom: 20px;
+  font-weight: 400;
+  outline: none;
+}
+
+.step-heading:focus-visible {
+  outline: 2px solid var(--ember-soft);
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+
+.validation-msg {
+  margin: 10px 0 0;
+  font-size: 0.8rem;
+  color: var(--ember-soft);
+  text-align: right;
 }
 
 .fields {

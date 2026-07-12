@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, ref, watch } from 'vue'
 import { useProfileStore } from '../stores/profile'
 
 const props = defineProps<{ day: string }>()
@@ -25,17 +25,62 @@ function isDone(si: number, ei: number) {
 function toggle(si: number, ei: number) {
   store.toggleExercise(exKey(si, ei))
 }
+
+// Celebrate when a day flips from incomplete to fully complete.
+const celebrating = ref(false)
+const burstParticles = Array.from({ length: 14 }, (_, i) => ({
+  angle: (360 / 14) * i,
+  distance: 60 + Math.random() * 40,
+  delay: Math.random() * 0.08,
+}))
+
+watch(
+  () => `${progress.value.done}/${progress.value.total}`,
+  (_, oldVal) => {
+    const [oldDone, oldTotal] = (oldVal ?? '0/0').split('/').map(Number)
+    const wasComplete = oldTotal > 0 && oldDone === oldTotal
+    const isComplete = progress.value.total > 0 && progress.value.done === progress.value.total
+    if (isComplete && !wasComplete) {
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      if (!reduceMotion) {
+        celebrating.value = true
+        setTimeout(() => (celebrating.value = false), 1200)
+      }
+    }
+  }
+)
 </script>
 
 <template>
   <div v-if="day" class="day-view">
     <RouterLink to="/dashboard" class="back-link">← Back to dashboard</RouterLink>
 
+    <div v-if="celebrating" class="celebration" aria-hidden="true">
+      <span
+        v-for="(p, i) in burstParticles"
+        :key="i"
+        class="burst-particle"
+        :style="{
+          '--angle': p.angle + 'deg',
+          '--distance': p.distance + 'px',
+          animationDelay: p.delay + 's',
+        }"
+      ></span>
+      <span class="celebration-text">Day complete</span>
+    </div>
+
     <header class="day-header">
       <p class="eyebrow mono">Day {{ String(day.day).padStart(2, '0') }} · {{ day.dayName }}</p>
       <h1>{{ day.title }}</h1>
       <div v-if="!day.isRestDay" class="day-progress">
-        <div class="progress-track">
+        <div
+          class="progress-track"
+          role="progressbar"
+          aria-label="Day progress"
+          :aria-valuenow="progressPct"
+          aria-valuemin="0"
+          aria-valuemax="100"
+        >
           <div class="progress-fill" :style="{ width: progressPct + '%' }"></div>
         </div>
         <span class="mono">{{ progress.done }} / {{ progress.total }} done</span>
@@ -56,9 +101,11 @@ function toggle(si: number, ei: number) {
             type="button"
             class="exercise"
             :class="{ done: isDone(si, ei) }"
+            :aria-pressed="isDone(si, ei)"
+            :aria-label="`${ex.name}, ${ex.prescription}${isDone(si, ei) ? ', completed' : ''}`"
             @click="toggle(si, ei)"
           >
-            <span class="check" :class="{ checked: isDone(si, ei) }">
+            <span class="check" :class="{ checked: isDone(si, ei) }" aria-hidden="true">
               <svg v-if="isDone(si, ei)" viewBox="0 0 16 16" width="11" height="11">
                 <path d="M2 8.5 6 12l8-8" stroke="#14161a" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" />
               </svg>
@@ -97,6 +144,60 @@ function toggle(si: number, ei: number) {
   display: inline-block;
   margin-bottom: 24px;
   transition: color 0.15s;
+}
+
+.celebration {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  z-index: 50;
+  pointer-events: none;
+}
+
+.burst-particle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--ember);
+  transform: translate(-50%, -50%);
+  animation: burst-out 0.9s ease-out both;
+}
+
+@keyframes burst-out {
+  from {
+    opacity: 1;
+    transform: translate(-50%, -50%) rotate(var(--angle)) translateX(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translate(-50%, -50%) rotate(var(--angle)) translateX(var(--distance)) scale(0.3);
+  }
+}
+
+.celebration-text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -140%);
+  white-space: nowrap;
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ember-soft);
+  font-size: 1.1rem;
+  animation: celebration-text-in 1.1s ease both;
+}
+
+@keyframes celebration-text-in {
+  0% { opacity: 0; transform: translate(-50%, -120%) scale(0.9); }
+  20% { opacity: 1; transform: translate(-50%, -140%) scale(1); }
+  75% { opacity: 1; }
+  100% { opacity: 0; transform: translate(-50%, -160%) scale(1); }
 }
 
 .back-link:hover {

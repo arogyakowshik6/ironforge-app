@@ -4,6 +4,29 @@ A Vue 3 + TypeScript app that turns a 12-question onboarding flow into a persona
 training and nutrition programme: TDEE/BMI calculation, macro targets, and a full
 7-day workout + diet plan across four goals (Weight Loss, Bulking, Cutting, Shredding).
 
+## Testing
+
+Unit tests cover the calculation logic (`useCalculator.ts`) — BMR/TDEE formulas,
+activity multipliers, per-goal calorie deltas, and macro math.
+
+```bash
+npm run test        # run once
+npm run test:watch  # watch mode
+```
+
+## Accessibility
+
+- Full keyboard navigation through the onboarding wizard; focus moves to each
+  new step's heading so screen readers announce progress
+- `aria-current="step"` on the step indicator, `role="progressbar"` with
+  `aria-valuenow` on all progress bars
+- Exercise check-off buttons use `aria-pressed` + descriptive `aria-label`s
+- Decorative SVGs (icons, gauge) are `aria-hidden` since the same info is
+  always available as text nearby
+- Focus moves to the main landmark on every route change
+- All motion (particles, Ken Burns zoom, celebration burst) respects
+  `prefers-reduced-motion`
+
 ## Stack
 
 - **Vue 3** (Composition API, `<script setup>`)
@@ -16,7 +39,7 @@ training and nutrition programme: TDEE/BMI calculation, macro targets, and a ful
 
 ## Interactive / visual features
 
-- **Exercise check-off tracking** — tap any exercise to mark it done; progress bars roll up per day and across the whole week (persisted locally)
+- **Exercise check-off tracking** — tap any exercise to mark it done; progress bars roll up per day and across the whole week (persisted locally); completing a day triggers a brief ember-burst celebration
 - Animated calorie gauge (sweeps in on load) and count-up numbers
 - Ambient ember particle background (canvas, respects `prefers-reduced-motion`)
 - Scroll-reveal animations on section entry (`v-reveal` directive)

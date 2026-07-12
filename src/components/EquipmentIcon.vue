@@ -3,7 +3,7 @@ withDefaults(defineProps<{ kind: 'dumbbell' | 'barbell' | 'kettlebell' | 'flame'
 </script>
 
 <template>
-  <svg viewBox="0 0 40 40" class="icon" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <svg viewBox="0 0 40 40" class="icon" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <template v-if="kind === 'dumbbell'">
       <rect x="4" y="16" width="5" height="8" rx="1.5" stroke="currentColor" stroke-width="1.6" />
       <rect x="31" y="16" width="5" height="8" rx="1.5" stroke="currentColor" stroke-width="1.6" />

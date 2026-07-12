@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { watch, nextTick, ref } from 'vue'
 import { useProfileStore } from './stores/profile'
 import { RouterView, RouterLink, useRoute, useRouter } from 'vue-router'
 import EmberField from './components/EmberField.vue'
@@ -11,6 +12,14 @@ function restart() {
   store.reset()
   router.push('/')
 }
+
+// Move focus to the main landmark on every navigation so keyboard and
+// screen-reader users aren't left stranded on the old page's last focus point.
+const mainRef = ref<HTMLElement | null>(null)
+watch(
+  () => route.fullPath,
+  () => nextTick(() => mainRef.value?.focus())
+)
 </script>
 
 <template>
@@ -19,7 +28,7 @@ function restart() {
     <header class="topbar">
       <RouterLink to="/" class="brand">
         <span class="brand-mark">
-          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
             <path d="M4 9h2v6H4V9zm3-2h2v10H7V7zm4-2h2v14h-2V5zm4 2h2v10h-2V7zm3 2h2v6h-2V9z" fill="currentColor" />
           </svg>
         </span>
@@ -31,7 +40,7 @@ function restart() {
         <button class="reset-btn" @click="restart">Restart</button>
       </nav>
     </header>
-    <main>
+    <main ref="mainRef" tabindex="-1">
       <RouterView v-slot="{ Component }">
         <Transition name="page-transition" mode="out-in">
           <component :is="Component" :key="route.fullPath" />
@@ -149,5 +158,6 @@ main {
   flex: 1;
   position: relative;
   z-index: 1;
+  outline: none;
 }
 </style>
