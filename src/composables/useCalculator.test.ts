@@ -1,4 +1,6 @@
-import { describe, it, expect } from 'vitest'
+declare function describe(name: string, fn: () => void): void
+declare function it(name: string, fn: () => void): void
+declare function expect(actual: any): any
 import { calculatePlan, goalLabel } from './useCalculator'
 import type { UserProfile } from '../types'
 
