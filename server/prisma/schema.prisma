@@ -1,0 +1,138 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String   @id @default(uuid())
+  email        String   @unique
+  passwordHash String
+  name         String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  profile         Profile?
+  memberships     Membership[]
+  workoutSessions WorkoutSession[]
+  exerciseLogs    ExerciseLog[]
+  paymentRecords  PaymentRecord[]
+}
+
+// Mirrors the onboarding wizard's 12 inputs (previously localStorage-only)
+model Profile {
+  id              String   @id @default(uuid())
+  userId          String   @unique
+  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  age             Int
+  gender          String
+  heightCm        Float
+  currentWeightKg Float
+  targetWeightKg  Float
+  bodyType        String
+  experience      String
+  goal            String
+  daysAvailable   Int
+  equipment       String
+  healthFlag      String
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+// Not wired to any UI yet — see server/README.md "Known gaps".
+model MembershipPlan {
+  id              String   @id @default(uuid())
+  name            String
+  description     String
+  priceCents      Int
+  billingInterval String // "monthly" | "yearly"
+  createdAt       DateTime @default(now())
+
+  memberships Membership[]
+}
+
+// Not wired to any UI yet — see server/README.md "Known gaps".
+model Membership {
+  id        String    @id @default(uuid())
+  userId    String
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  planId    String
+  plan      MembershipPlan @relation(fields: [planId], references: [id])
+  status    String // "active" | "cancelled" | "expired"
+  startDate DateTime  @default(now())
+  endDate   DateTime?
+  createdAt DateTime  @default(now())
+}
+
+// Static program content (weight-loss / bulking / cutting / shredding),
+// seeded once from the same source data the frontend bundles. The frontend
+// still reads its own copy for instant rendering; this table exists so
+// workouts/exercises are queryable/joinable per the issue's schema, and so
+// ExerciseLog has something real to reference.
+model Workout {
+  id        String  @id @default(uuid())
+  goalKey   String // weight-loss | bulking | cutting | shredding
+  day       Int
+  dayName   String
+  title     String
+  isRestDay Boolean @default(false)
+
+  exercises Exercise[]
+
+  @@unique([goalKey, day])
+}
+
+model Exercise {
+  id            String  @id @default(uuid())
+  workoutId     String
+  workout       Workout @relation(fields: [workoutId], references: [id], onDelete: Cascade)
+  sessionIndex  Int
+  sessionLabel  String?
+  exerciseIndex Int
+  name          String
+  prescription  String
+  description   String
+
+  logs ExerciseLog[]
+
+  @@unique([workoutId, sessionIndex, exerciseIndex])
+}
+
+// A logged visit to the gym for a given programme day (distinct from
+// exercise-level completion below — this is the "I trained today" record).
+model WorkoutSession {
+  id          String   @id @default(uuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  day         Int
+  completedAt DateTime @default(now())
+  notes       String?
+}
+
+// Replaces the old client-only `ironforge:progress` localStorage map.
+model ExerciseLog {
+  id          String   @id @default(uuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  exerciseId  String
+  exercise    Exercise @relation(fields: [exerciseId], references: [id], onDelete: Cascade)
+  completed   Boolean  @default(true)
+  completedAt DateTime @default(now())
+
+  @@unique([userId, exerciseId])
+}
+
+// Not wired to any real payment provider — see server/README.md "Known gaps".
+model PaymentRecord {
+  id          String   @id @default(uuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  amountCents Int
+  currency    String   @default("usd")
+  status      String // "succeeded" | "pending" | "failed"
+  provider    String   @default("stub")
+  createdAt   DateTime @default(now())
+}

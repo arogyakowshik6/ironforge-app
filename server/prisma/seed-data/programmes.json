@@ -1,0 +1,1540 @@
+{
+  "questions": [
+    {
+      "order": 1,
+      "label": "Name / Nickname",
+      "detail": "Text input. Used for personalised greeting."
+    },
+    {
+      "order": 2,
+      "label": "Age",
+      "detail": "Number between 16 and 70. Adjusts plan intensity and recovery time."
+    },
+    {
+      "order": 3,
+      "label": "Gender",
+      "detail": "Male / Female / Prefer not to say. Influences calorie targets."
+    },
+    {
+      "order": 4,
+      "label": "Height",
+      "detail": "In cm or ft/in. Used in BMI and TDEE calculation."
+    },
+    {
+      "order": 5,
+      "label": "Current Weight",
+      "detail": "In kg or lbs. Baseline for tracking progress."
+    },
+    {
+      "order": 6,
+      "label": "Target Weight",
+      "detail": "In kg or lbs. Determines the size of the goal gap."
+    },
+    {
+      "order": 7,
+      "label": "Body Type",
+      "detail": "Ectomorph (naturally slim) / Mesomorph (athletic build) / Endomorph (naturally heavier). Shapes nutrition ratios."
+    },
+    {
+      "order": 8,
+      "label": "Gym Experience",
+      "detail": "Beginner / Intermediate / Advanced. Sets exercise difficulty and volume."
+    },
+    {
+      "order": 9,
+      "label": "Fitness Goal",
+      "detail": "Weight Loss / Bulking / Cutting / Shredding. Determines the entire plan."
+    },
+    {
+      "order": 10,
+      "label": "Days Available per Week",
+      "detail": "3 / 4 / 5 / 6 / 7. Shapes the weekly training schedule."
+    },
+    {
+      "order": 11,
+      "label": "Equipment Access",
+      "detail": "Home only / Full gym / Both. Filters exercise options accordingly."
+    },
+    {
+      "order": 12,
+      "label": "Health Conditions",
+      "detail": "None / Injury / Medical condition. Used as a safety flag for exercise modifications."
+    }
+  ],
+  "programmes": [
+    {
+      "key": "weight-loss",
+      "name": "Weight Loss",
+      "blurb": "Reduce overall body fat with cardio and circuits.",
+      "description": "This plan combines metabolic conditioning, circuit training and steady-state cardio to maximise calorie burn while preserving lean muscle. Paired with a moderate calorie deficit.",
+      "macros": {
+        "female": {
+          "label": "Female (~70kg):",
+          "kcal": "1,500",
+          "protein": "130",
+          "carbs": "130",
+          "fats": "50"
+        },
+        "male": {
+          "label": "Male (~85kg):",
+          "kcal": "1,900",
+          "protein": "170",
+          "carbs": "160",
+          "fats": "60"
+        },
+        "generalRule": "2g protein per kg of bodyweight. Calories to be 400\u2013600 below your TDEE.",
+        "highCarbDays": null,
+        "lowCarbDays": null
+      },
+      "days": [
+        {
+          "day": 1,
+          "dayName": "Monday",
+          "title": "Full Body Circuit + Cardio",
+          "isRestDay": false,
+          "restNote": null,
+          "sessions": [
+            {
+              "label": null,
+              "exercises": [
+                {
+                  "name": "Jumping Jacks",
+                  "prescription": "3 sets x 45 seconds, 15 sec rest",
+                  "description": "Stand upright, jump feet apart and raise arms overhead. Return to start. Keep core braced throughout."
+                },
+                {
+                  "name": "Bodyweight Squats",
+                  "prescription": "4 sets x 15 reps, 45 sec rest",
+                  "description": "Feet shoulder-width, toes slightly out. Lower hips until thighs are parallel to floor. Drive through heels to stand."
+                },
+                {
+                  "name": "Push-Ups",
+                  "prescription": "3 sets x 12 reps, 45 sec rest",
+                  "description": "Hands shoulder-width, body straight. Lower chest to floor then press back up. Keep elbows at 45 degrees."
+                },
+                {
+                  "name": "Mountain Climbers",
+                  "prescription": "3 sets x 30 seconds, 20 sec rest",
+                  "description": "Plank position. Drive alternating knees to chest rapidly. Keep hips level and core tight throughout."
+                },
+                {
+                  "name": "Dumbbell Row",
+                  "prescription": "3 sets x 12 reps each side, 45 sec rest",
+                  "description": "Lean forward with one hand on bench. Pull dumbbell to hip, elbow driving back. Squeeze shoulder blade at top."
+                },
+                {
+                  "name": "Burpees",
+                  "prescription": "3 sets x 10 reps, 60 sec rest",
+                  "description": "Squat down, jump feet back to plank, do a push-up, jump feet in, then explode upward with arms raised."
+                },
+                {
+                  "name": "Plank Hold",
+                  "prescription": "3 sets x 45 seconds, 30 sec rest",
+                  "description": "Forearms on floor, body straight. Squeeze glutes and core. Don't let hips sag or rise. Breathe steadily."
+                },
+                {
+                  "name": "Treadmill Jog",
+                  "prescription": "1 x 20 minutes steady pace",
+                  "description": "Maintain moderate effort (5\u20136 out of 10). Incline 1\u20132% on treadmill. Focus on steady breathing."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "day": 2,
+          "dayName": "Tuesday",
+          "title": "Lower Body + Core",
+          "isRestDay": false,
+          "restNote": null,
+          "sessions": [
+            {
+              "label": null,
+              "exercises": [
+                {
+                  "name": "Walking Lunges",
+                  "prescription": "4 sets x 12 reps each leg, 45 sec rest",
+                  "description": "Step forward and lower back knee toward floor. Push off front foot to bring feet together and repeat other leg."
+                },
+                {
+                  "name": "Sumo Squats",
+                  "prescription": "3 sets x 15 reps, 45 sec rest",
+                  "description": "Wide stance, toes out 45 degrees. Lower hips keeping chest up. Drive hips up and squeeze glutes at top."
+                },
+                {
+                  "name": "Glute Bridges",
+                  "prescription": "4 sets x 20 reps, 30 sec rest",
+                  "description": "Lie on back, knees bent. Drive hips to ceiling, squeeze glutes hard at top. Lower slowly."
+                },
+                {
+                  "name": "Step-Ups",
+                  "prescription": "3 sets x 15 reps each leg, 45 sec rest",
+                  "description": "Use a bench or step. Drive through the heel of the working leg. Don't push off the trailing foot."
+                },
+                {
+                  "name": "Leg Raises",
+                  "prescription": "3 sets x 15 reps, 30 sec rest",
+                  "description": "Lie flat, hands under hips. Raise straight legs to 90 degrees and lower slowly without touching the floor."
+                },
+                {
+                  "name": "Russian Twists",
+                  "prescription": "3 sets x 20 reps, 30 sec rest",
+                  "description": "Sit at 45 degrees, feet off floor. Rotate torso fully side to side. Hold a weight for added resistance."
+                },
+                {
+                  "name": "Bicycle Crunches",
+                  "prescription": "3 sets x 30 reps, 30 sec rest",
+                  "description": "Hands behind head. Alternate bringing elbow to opposite knee. Extend other leg long. Do not pull neck."
+                },
+                {
+                  "name": "Jump Rope / Skipping",
+                  "prescription": "1 x 15 minutes",
+                  "description": "Keep a light rhythmic bounce. Jump low and land softly on balls of feet. If no rope, mimic the movement."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "day": 3,
+          "dayName": "Wednesday",
+          "title": "Active Recovery",
+          "isRestDay": true,
+          "restNote": "No resistance training. Suggested activities: 30-minute walk, foam rolling, yoga, or light swimming. Drink at least 3 litres of water. Focus on stretching tight areas from the first two days.",
+          "sessions": [
+            {
+              "label": null,
+              "exercises": []
+            }
+          ]
+        },
+        {
+          "day": 4,
+          "dayName": "Thursday",
+          "title": "Upper Body + HIIT",
+          "isRestDay": false,
+          "restNote": null,
+          "sessions": [
+            {
+              "label": null,
+              "exercises": [
+                {
+                  "name": "Dumbbell Shoulder Press",
+                  "prescription": "3 sets x 12 reps, 45 sec rest",
+                  "description": "Sit or stand. Press dumbbells from ear height to above head. Lower controlled. Don't arch lower back."
+                },
+                {
+                  "name": "Dumbbell Bicep Curls",
+                  "prescription": "3 sets x 12 reps, 45 sec rest",
+                  "description": "Stand, palms forward. Curl both dumbbells to shoulders squeezing biceps. Lower slowly over 3 seconds."
+                },
+                {
+                  "name": "Tricep Dips",
+                  "prescription": "3 sets x 12 reps, 45 sec rest",
+                  "description": "Hands on chair edge behind you. Lower body by bending elbows to 90 degrees, press back up. Keep back close to chair."
+                },
+                {
+                  "name": "Bent-Over Dumbbell Rows",
+                  "prescription": "3 sets x 12 reps, 45 sec rest",
+                  "description": "Hinge at hips 45 degrees, back flat. Pull dumbbells to ribcage, elbows close. Squeeze back at top."
+                },
+                {
+                  "name": "High Knees",
+                  "prescription": "4 sets x 30 seconds, 15 sec rest",
+                  "description": "Run on the spot driving knees above hip height. Pump arms. Stay on balls of feet. Maximum effort."
+                },
+                {
+                  "name": "Jump Squats",
+                  "prescription": "3 sets x 10 reps, 60 sec rest",
+                  "description": "Squat then explode upward. Land softly with bent knees, absorb impact through legs. Reset before next rep."
+                },
+                {
+                  "name": "Push-Up to Shoulder Tap",
+                  "prescription": "3 sets x 10 reps, 45 sec rest",
+                  "description": "Do a push-up, at the top tap each shoulder alternately. Keep hips square. Core tight."
+                },
+                {
+                  "name": "Rowing Machine or Bike",
+                  "prescription": "1 x 20 minutes at moderate effort",
+                  "description": "Aim for 70% max heart rate. Focus on breathing rhythm throughout."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "day": 5,
+          "dayName": "Friday",
+          "title": "Full Body HIIT",
+          "isRestDay": false,
+          "restNote": null,
+          "sessions": [
+            {
+              "label": null,
+              "exercises": [
+                {
+                  "name": "Squat to Press",
+                  "prescription": "4 sets x 12 reps, 45 sec rest",
+                  "description": "Hold dumbbells at shoulders. Squat down, stand and press overhead in one fluid motion."
+                },
+                {
+                  "name": "Renegade Rows",
+                  "prescription": "3 sets x 10 reps each side, 60 sec rest",
+                  "description": "Plank with dumbbells. Row one dumbbell to hip, return, repeat other side. Keep hips still."
+                },
+                {
+                  "name": "Lateral Lunges",
+                  "prescription": "3 sets x 12 reps each side, 45 sec rest",
+                  "description": "Step wide to one side, bend that knee, keep other leg straight. Push back to centre. Chest stays up."
+                },
+                {
+                  "name": "Flutter Kicks",
+                  "prescription": "3 sets x 30 seconds, 30 sec rest",
+                  "description": "Lie flat, legs raised 15cm. Alternate small up-down kicks. Keep lower back pressed into floor."
+                },
+                {
+                  "name": "Dumbbell Deadlift",
+                  "prescription": "3 sets x 12 reps, 60 sec rest",
+                  "description": "Feet hip-width, dumbbells in front of thighs. Hinge at hips keeping back flat. Drive hips forward to stand."
+                },
+                {
+                  "name": "Speed Skaters",
+                  "prescription": "3 sets x 30 seconds, 20 sec rest",
+                  "description": "Leap laterally landing on one foot, sweep other leg behind. Mimic an ice skater. Stay light on feet."
+                },
+                {
+                  "name": "Stair Climb or Incline Walk",
+                  "prescription": "1 x 20 minutes",
+                  "description": "High incline (12\u201315%). Swing arms naturally. Maintain steady pace throughout."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "day": 6,
+          "dayName": "Saturday",
+          "title": "Cardio & Core Endurance",
+          "isRestDay": false,
+          "restNote": null,
+          "sessions": [
+            {
+              "label": null,
+              "exercises": [
+                {
+                  "name": "Long Walk or Light Jog",
+                  "prescription": "1 x 40 minutes",
+                  "description": "Steady low-intensity pace. Heart rate at 60\u201365% max. Ideal outdoors for mental health benefits."
+                },
+                {
+                  "name": "Dead Bug",
+                  "prescription": "3 sets x 10 reps each side, 30 sec rest",
+                  "description": "Lie on back, arms up, knees at 90 degrees. Lower opposite arm and leg simultaneously without back lifting."
+                },
+                {
+                  "name": "Side Plank",
+                  "prescription": "3 sets x 30 seconds each side, 30 sec rest",
+                  "description": "Body in straight line, one forearm on floor. Stack feet or stagger. Don't let hips drop."
+                },
+                {
+                  "name": "V-Sit Hold",
+                  "prescription": "3 sets x 20 seconds, 30 sec rest",
+                  "description": "Sit, lean back 45 degrees, raise legs to form a V. Hold with arms forward. Bend knees slightly if needed."
+                },
+                {
+                  "name": "Slow Bicycle Crunches",
+                  "prescription": "3 sets x 20 reps, 30 sec rest",
+                  "description": "Same as bicycle crunch but 3-second tempo. Full extension of leg and full rotation of torso each rep."
+                },
+                {
+                  "name": "Foam Roll and Stretch",
+                  "prescription": "1 x 15 minutes",
+                  "description": "Roll quads, hamstrings, calves, IT band. Hold each stretch 30\u201345 seconds. Focus on tight areas."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "day": 7,
+          "dayName": "Sunday",
+          "title": "Full Rest",
+          "isRestDay": true,
+          "restNote": "Complete rest. No training. Hydrate well, sleep 7\u20139 hours, and prepare meals for the week ahead. Let your body fully recover before the next cycle begins.",
+          "sessions": [
+            {
+              "label": null,
+              "exercises": []
+            }
+          ]
+        }
+      ],
+      "diet": {
+        "intro": "High protein, moderate carb, low fat. Aim for a calorie deficit of 400\u2013600 below your TDEE. Prioritise whole foods and avoid processed sugar.",
+        "carbCycle": false,
+        "dailyMeals": [
+          {
+            "meal": "Breakfast",
+            "name": "Oats with berries and protein powder",
+            "items_note": "80g oats, 1 scoop protein powder, 100g mixed berries. Slow-release energy, high fibre, antioxidants."
+          },
+          {
+            "meal": "Mid-Morning Snack",
+            "name": "Greek yogurt and almonds",
+            "items_note": "170g 0% Greek yogurt, 20g almonds. High protein, healthy fats, keeps hunger away."
+          },
+          {
+            "meal": "Lunch",
+            "name": "Grilled chicken with quinoa and salad",
+            "items_note": "180g chicken breast, 80g quinoa, mixed leaves. Lean protein, complete amino acids, complex carbs."
+          },
+          {
+            "meal": "Afternoon Snack",
+            "name": "Apple with peanut butter",
+            "items_note": "1 medium apple, 1 tablespoon peanut butter. Natural sugar and healthy fat for sustained energy."
+          },
+          {
+            "meal": "Dinner",
+            "name": "Baked salmon with sweet potato and broccoli",
+            "items_note": "180g salmon, 150g sweet potato, 200g broccoli. Omega-3, slow carbs, vitamins, very filling."
+          },
+          {
+            "meal": "Evening",
+            "name": "Cottage cheese",
+            "items_note": "150g low-fat cottage cheese. Casein protein is slow digesting, ideal before sleep to feed muscles overnight."
+          }
+        ],
+        "foodsToAvoid": [
+          "Sugary drinks: fizzy drinks, fruit juice, sports drinks with added sugar",
+          "Processed snacks: crisps, biscuits, chocolate bars, white bread",
+          "Fried foods: chips, fried chicken, battered fish",
+          "Alcohol: empty calories that impair recovery and fat burning",
+          "High-sugar cereals and instant oatmeal with added sugar"
+        ],
+        "healthySnacks": [
+          "Rice cakes with avocado",
+          "Hard-boiled eggs (2)",
+          "Cucumber slices with hummus",
+          "Protein shake with water (post-workout)",
+          "Mixed berries: blueberries, raspberries, strawberries"
+        ],
+        "supplements": []
+      }
+    },
+    {
+      "key": "bulking",
+      "name": "Bulking",
+      "blurb": "Build maximum muscle mass with heavy compound lifts.",
+      "description": "This plan focuses on progressive overload with heavy compound movements to stimulate maximum muscle growth. Paired with a calorie surplus to fuel muscle building.",
+      "macros": {
+        "female": {
+          "label": "Female (~60kg):",
+          "kcal": "2,200",
+          "protein": "140",
+          "carbs": "260",
+          "fats": "65"
+        },
+        "male": {
+          "label": "Male (~80kg):",
+          "kcal": "2,900",
+          "protein": "190",
+          "carbs": "340",
+          "fats": "80"
+        },
+        "generalRule": "Eat 300\u2013500 calories above your TDEE. 2\u20132.5g protein per kg of bodyweight.",
+        "highCarbDays": null,
+        "lowCarbDays": null
+      },
+      "days": [
+        {
+          "day": 1,
+          "dayName": "Monday",
+          "title": "Chest & Triceps",
+          "isRestDay": false,
+          "restNote": null,
+          "sessions": [
+            {
+              "label": null,
+              "exercises": [
+                {
+                  "name": "Barbell Bench Press",
+                  "prescription": "4 sets x 6\u20138 reps, 90 sec rest",
+                  "description": "Lie on bench, bar above chest. Lower to lower chest, press explosively up. Keep feet flat, arch natural."
+                },
+                {
+                  "name": "Incline Dumbbell Press",
+                  "prescription": "3 sets x 8\u201310 reps, 75 sec rest",
+                  "description": "Bench at 30\u201345 degrees. Press dumbbells from chest level up. Feel the upper chest stretch at bottom."
+                },
+                {
+                  "name": "Cable Flyes",
+                  "prescription": "3 sets x 12 reps, 60 sec rest",
+                  "description": "Arms wide, slight elbow bend. Bring hands together in front of chest in an arc. Squeeze pecs hard at the top."
+                },
+                {
+                  "name": "Dips",
+                  "prescription": "3 sets x 10 reps, 60 sec rest",
+                  "description": "Lean forward slightly, elbows flared. Lower until shoulders are below elbows. Press back up. Full range of motion."
+                },
+                {
+                  "name": "Skull Crushers",
+                  "prescription": "3 sets x 10 reps, 60 sec rest",
+                  "description": "Lie on bench, EZ bar above forehead. Bend elbows lowering bar near forehead. Extend back up. Control the lowering."
+                },
+                {
+                  "name": "Tricep Pushdowns",
+                  "prescription": "3 sets x 12 reps, 45 sec rest",
+                  "description": "Cable at shoulder height. Press bar down until arms fully extended. Keep elbows fixed at sides. Squeeze at bottom."
+                },
+                {
+                  "name": "Push-Up Burnout",
+                  "prescription": "1 set to failure",
+                  "description": "Standard push-ups until form breaks. This is a finishing set only. Don't sacrifice form for extra reps."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "day": 2,
+          "dayName": "Tuesday",
+          "title": "Back & Biceps",
+          "isRestDay": false,
+          "restNote": null,
+          "sessions": [
+            {
+              "label": null,
+              "exercises": [
+                {
+                  "name": "Barbell Deadlift",
+                  "prescription": "4 sets x 5 reps, 120 sec rest",
+                  "description": "Bar over mid-foot. Grip outside legs. Push the floor away rather than pulling. Lock hips and shoulders rising together."
+                },
+                {
+                  "name": "Pull-Ups or Lat Pulldown",
+                  "prescription": "4 sets x 8 reps, 90 sec rest",
+                  "description": "Full hang, pull elbows to sides, chest to bar. Use lat pulldown machine if pull-ups are not yet possible."
+                },
+                {
+                  "name": "Seated Cable Rows",
+                  "prescription": "3 sets x 10 reps, 60 sec rest",
+                  "description": "Sit upright, pull handle to lower ribs. Squeeze shoulder blades together. Don't rock torso backward."
+                },
+                {
+                  "name": "Single-Arm Dumbbell Row",
+                  "prescription": "3 sets x 10 reps each side, 60 sec rest",
+                  "description": "Support on bench. Pull dumbbell to hip, elbow drives straight back. Full stretch at bottom."
+                },
+                {
+                  "name": "Face Pulls",
+                  "prescription": "3 sets x 15 reps, 45 sec rest",
+                  "description": "Cable at forehead height. Pull rope to face, elbows high. Externally rotate at end. Great for posture."
+                },
+                {
+                  "name": "Barbell Bicep Curl",
+                  "prescription": "3 sets x 10 reps, 60 sec rest",
+                  "description": "Stand, shoulder-width grip, curl to shoulders. Squeeze hard. Lower over 3 seconds. No swinging."
+                },
+                {
+                  "name": "Hammer Curls",
+                  "prescription": "3 sets x 12 reps, 45 sec rest",
+                  "description": "Palms facing each other. Curl alternately. Slow negative phase for maximum muscle growth stimulus."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "day": 3,
+          "dayName": "Wednesday",
+          "title": "Legs & Glutes",
+          "isRestDay": false,
+          "restNote": null,
+          "sessions": [
+            {
+              "label": null,
+              "exercises": [
+                {
+                  "name": "Barbell Back Squat",
+                  "prescription": "4 sets x 6\u20138 reps, 120 sec rest",
+                  "description": "Bar on traps. Feet shoulder-width. Sit back and down keeping chest tall. Drive through heels to lockout."
+                },
+                {
+                  "name": "Romanian Deadlift",
+                  "prescription": "3 sets x 10 reps, 90 sec rest",
+                  "description": "Hinge at hips, slight knee bend, bar slides down legs. Feel the hamstring stretch, drive hips forward to stand."
+                },
+                {
+                  "name": "Leg Press",
+                  "prescription": "4 sets x 12 reps, 75 sec rest",
+                  "description": "Push platform away through heels. Don't lock knees at top. Lower slowly. Full range of motion every rep."
+                },
+                {
+                  "name": "Walking Lunges",
+                  "prescription": "3 sets x 12 reps each leg, 60 sec rest",
+                  "description": "Hold dumbbells at sides. Large step forward, lower back knee near floor. Push through front heel. Alternate."
+                },
+                {
+                  "name": "Leg Curl Machine",
+                  "prescription": "3 sets x 12 reps, 60 sec rest",
+                  "description": "Lie face down. Curl heels toward glutes. Squeeze hamstrings hard at top. Lower slowly over 3 seconds."
+                },
+                {
+                  "name": "Calf Raises",
+                  "prescription": "4 sets x 20 reps, 45 sec rest",
+                  "description": "On a step edge. Lower heel fully then raise up on toes and hold for 1 second. Full range. Use heavy weight if possible."
+                },
+                {
+                  "name": "Hip Thrust",
+                  "prescription": "3 sets x 15 reps, 60 sec rest",
+                  "description": "Upper back on bench, bar across hips. Drive hips to ceiling, squeeze glutes hard at the top for 1 second."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "day": 4,
+          "dayName": "Thursday",
+          "title": "Rest / Active Recovery",
+          "isRestDay": true,
+          "restNote": "Light activity only. Suggested: 30-minute walk, foam rolling, or yoga. No resistance training. This rest day is essential for muscle repair and growth. Drink plenty of water and prioritise sleep.",
+          "sessions": [
+            {
+              "label": null,
+              "exercises": []
+            }
+          ]
+        },
+        {
+          "day": 5,
+          "dayName": "Friday",
+          "title": "Shoulders & Traps",
+          "isRestDay": false,
+          "restNote": null,
+          "sessions": [
+            {
+              "label": null,
+              "exercises": [
+                {
+                  "name": "Barbell Overhead Press",
+                  "prescription": "4 sets x 6\u20138 reps, 90 sec rest",
+                  "description": "Press bar from collar bones to above head. Lock out elbows. Squeeze glutes to protect lower back."
+                },
+                {
+                  "name": "Dumbbell Lateral Raises",
+                  "prescription": "4 sets x 12 reps, 60 sec rest",
+                  "description": "Arms at sides, slight elbow bend. Raise to shoulder height, lead with elbows. Lower slowly. Don't shrug."
+                },
+                {
+                  "name": "Front Raises",
+                  "prescription": "3 sets x 12 reps, 60 sec rest",
+                  "description": "Use plates or dumbbells. Raise in front to shoulder height. Alternate arms. Control the return to avoid momentum."
+                },
+                {
+                  "name": "Arnold Press",
+                  "prescription": "3 sets x 10 reps, 60 sec rest",
+                  "description": "Start palms facing you at chin, rotate out as you press overhead. Reverse on the way down. Full rotation."
+                },
+                {
+                  "name": "Barbell Shrugs",
+                  "prescription": "3 sets x 15 reps, 60 sec rest",
+                  "description": "Hold bar at thighs. Shrug shoulders straight up to ears, hold 1 second. Don't roll shoulders."
+                },
+                {
+                  "name": "Rear Delt Flyes",
+                  "prescription": "3 sets x 15 reps, 45 sec rest",
+                  "description": "Bend over 90 degrees, dumbbells hanging. Raise arms to sides squeezing rear delts. Pinch shoulder blades."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "day": 6,
+          "dayName": "Saturday",
+          "title": "Full Body Strength + Core",
+          "isRestDay": false,
+          "restNote": null,
+          "sessions": [
+            {
+              "label": null,
+              "exercises": [
+                {
+                  "name": "Power Cleans",
+                  "prescription": "4 sets x 5 reps, 120 sec rest",
+                  "description": "Bar from floor, explosive pull, catch in front rack position. Technical lift \u2014 start light and focus on form."
+                },
+                {
+                  "name": "Pull-Up Variation",
+                  "prescription": "3 sets x 8 reps, 90 sec rest",
+                  "description": "Wide, close or neutral grip. Full hang to chin above bar. Pause at the bottom to eliminate momentum."
+                },
+                {
+                  "name": "Weighted Plank",
+                  "prescription": "3 sets x 45 seconds, 45 sec rest",
+                  "description": "Standard plank with a weight plate on lower back (have a partner place it). Maintain a straight body position."
+                },
+                {
+                  "name": "Cable Woodchop",
+                  "prescription": "3 sets x 12 reps each side, 45 sec rest",
+                  "description": "Rotate from high cable to opposite low hip. Straight arms. Pivot rear foot. Core does the work, not arms."
+                },
+                {
+                  "name": "Ab Wheel Rollout",
+                  "prescription": "3 sets x 10 reps, 45 sec rest",
+                  "description": "Kneel with wheel in hands. Roll forward until arms extended, return by contracting abs. Don't let hips drop."
+                },
+                {
+                  "name": "Hanging Leg Raise",
+                  "prescription": "3 sets x 12 reps, 45 sec rest",
+                  "description": "Hang from bar. Raise legs to 90 degrees or higher. Slow and controlled. Don't swing or use momentum."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "day": 7,
+          "dayName": "Sunday",
+          "title": "Full Rest",
+          "isRestDay": true,
+          "restNote": "Complete rest. No training at all. Eat your full calorie surplus, sleep 8+ hours and prepare for next week. Muscle grows during rest, not during training.",
+          "sessions": [
+            {
+              "label": null,
+              "exercises": []
+            }
+          ]
+        }
+      ],
+      "diet": {
+        "intro": "High calorie, high protein, high carb. Surplus of 300\u2013500 calories above your TDEE. Focus on nutrient-dense whole foods. Avoid junk food even in a surplus \u2014 quality calories build better muscle.",
+        "carbCycle": false,
+        "dailyMeals": [
+          {
+            "meal": "Breakfast",
+            "name": "Whole eggs, oats and banana",
+            "items_note": "4 whole eggs, 100g oats, 1 banana, 200ml whole milk. High calorie with protein and slow and fast carbs for energy."
+          },
+          {
+            "meal": "Mid-Morning",
+            "name": "Mass shake or peanut butter toast",
+            "items_note": "1 scoop protein, 500ml whole milk, 2 tbsp peanut butter on 2 slices brown bread. Dense calorie hit with protein and healthy fats."
+          },
+          {
+            "meal": "Lunch",
+            "name": "Beef mince with white rice and vegetables",
+            "items_note": "200g lean beef mince, 150g white rice, mixed veg. Red meat provides creatine, fast carbs, essential vitamins."
+          },
+          {
+            "meal": "Pre-Workout",
+            "name": "Rice cakes and protein bar",
+            "items_note": "3 rice cakes, 1 quality protein bar (25g+ protein). Quick carbs for training energy with no gut discomfort."
+          },
+          {
+            "meal": "Post-Workout",
+            "name": "Protein shake and fruit",
+            "items_note": "2 scoops whey, 1 banana, 250ml milk. Fast protein and simple carbs to spike insulin and shuttle nutrients to muscle."
+          },
+          {
+            "meal": "Dinner",
+            "name": "Chicken thighs, pasta and olive oil",
+            "items_note": "250g chicken thighs, 200g pasta, 1 tbsp olive oil. High calorie, protein and fat dense evening meal."
+          },
+          {
+            "meal": "Before Bed",
+            "name": "Casein shake or cottage cheese",
+            "items_note": "200g full-fat cottage cheese or 1 scoop casein protein. Slow-digesting protein feeds muscle repair throughout the night."
+          }
+        ],
+        "foodsToAvoid": [
+          "Fast food and takeaways \u2014 high trans fats impair hormone function",
+          "Alcohol \u2014 significantly suppresses testosterone and impairs muscle protein synthesis",
+          "Sugary cereals \u2014 cause blood sugar spikes with no muscle-building benefit"
+        ],
+        "healthySnacks": [
+          "Peanut butter on rice cakes (4\u20136 cakes)",
+          "Trail mix: almonds, cashews, walnuts, dried mango",
+          "Whole milk blended with banana",
+          "Tuna on wholemeal toast",
+          "Greek yogurt with honey and granola"
+        ],
+        "supplements": []
+      }
+    },
+    {
+      "key": "cutting",
+      "name": "Cutting",
+      "blurb": "Lose fat while retaining muscle via strength training and moderate cardio.",
+      "description": "Cutting combines strength training to preserve muscle mass with a moderate calorie deficit. Higher protein intake prevents muscle breakdown. Cardio is used strategically, not excessively.",
+      "macros": {
+        "female": {
+          "label": "Female (~65kg):",
+          "kcal": "1,600",
+          "protein": "145",
+          "carbs": "140",
+          "fats": "45"
+        },
+        "male": {
+          "label": "Male (~85kg):",
+          "kcal": "2,100",
+          "protein": "200",
+          "carbs": "185",
+          "fats": "58"
+        },
+        "generalRule": "2.2\u20132.5g protein per kg of bodyweight. Deficit of 300\u2013500 calories below TDEE.",
+        "highCarbDays": null,
+        "lowCarbDays": null
+      },
+      "days": [
+        {
+          "day": 1,
+          "dayName": "Monday",
+          "title": "Upper Body Strength (Push)",
+          "isRestDay": false,
+          "restNote": null,
+          "sessions": [
+            {
+              "label": null,
+              "exercises": [
+                {
+                  "name": "Barbell Bench Press",
+                  "prescription": "4 sets x 8 reps, 75 sec rest",
+                  "description": "Maintain strength from bulk. Lower weight slightly if needed. Full range of motion \u2014 touch chest and lock out."
+                },
+                {
+                  "name": "Incline Dumbbell Press",
+                  "prescription": "3 sets x 10 reps, 60 sec rest",
+                  "description": "Keep pressing volume high to retain chest muscle. Control the negative \u2014 3 seconds on the way down."
+                },
+                {
+                  "name": "Dumbbell Shoulder Press",
+                  "prescription": "3 sets x 10 reps, 60 sec rest",
+                  "description": "Seated for stability. Press from ear height to full extension. Don't flare elbows excessively."
+                },
+                {
+                  "name": "Lateral Raises",
+                  "prescription": "3 sets x 15 reps, 45 sec rest",
+                  "description": "Lighter weight, higher reps to maintain shoulder size while in a deficit. Strict form \u2014 no cheating."
+                },
+                {
+                  "name": "Tricep Pushdowns",
+                  "prescription": "3 sets x 15 reps, 45 sec rest",
+                  "description": "Full extension each rep. Squeeze at bottom. Superset with push-ups if time allows."
+                },
+                {
+                  "name": "Cable Flyes",
+                  "prescription": "3 sets x 12 reps, 45 sec rest",
+                  "description": "Finish with isolation. Arms arc together, squeeze peak contraction for 2 seconds each rep."
+                },
+                {
+                  "name": "HIIT Finisher",
+                  "prescription": "1 x 10 minutes. 10 rounds: 30 seconds all-out effort (sprints or bike), 30 seconds rest",
+                  "description": "Maximum output each working interval."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "day": 2,
+          "dayName": "Tuesday",
+          "title": "Lower Body Strength",
+          "isRestDay": false,
+          "restNote": null,
+          "sessions": [
+            {
+              "label": null,
+              "exercises": [
+                {
+                  "name": "Barbell Squat",
+                  "prescription": "4 sets x 8 reps, 90 sec rest",
+                  "description": "Keep heavy squats in the programme to preserve leg muscle. Don't reduce load too aggressively."
+                },
+                {
+                  "name": "Romanian Deadlift",
+                  "prescription": "3 sets x 10 reps, 75 sec rest",
+                  "description": "Hamstring focus. Full stretch at bottom each rep. Controlled tempo \u2014 2 seconds up, 3 seconds down."
+                },
+                {
+                  "name": "Bulgarian Split Squats",
+                  "prescription": "3 sets x 10 reps each leg, 60 sec rest",
+                  "description": "Rear foot elevated on bench. Lower back knee near floor. Great for quads and balance."
+                },
+                {
+                  "name": "Leg Curl Machine",
+                  "prescription": "3 sets x 12 reps, 60 sec rest",
+                  "description": "Full range. Squeeze hard at top. 3-second lower. Hamstrings respond well to slow reps."
+                },
+                {
+                  "name": "Leg Extension",
+                  "prescription": "3 sets x 15 reps, 45 sec rest",
+                  "description": "Extend to fully straight. Hold 1 second, lower slowly. Light to moderate weight for high reps."
+                },
+                {
+                  "name": "Calf Raises",
+                  "prescription": "3 sets x 20 reps, 30 sec rest",
+                  "description": "Full range. Pause at top and bottom of each rep."
+                },
+                {
+                  "name": "Incline Treadmill Walk",
+                  "prescription": "1 x 20 minutes",
+                  "description": "Incline 12\u201315%, moderate pace. Low-impact fat burning that doesn't eat into muscle like excessive HIIT can during a deficit."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "day": 3,
+          "dayName": "Wednesday",
+          "title": "Active Recovery",
+          "isRestDay": true,
+          "restNote": "Light activity only. Suggested: 30-minute walk, foam rolling, yoga, or light swimming. Flexibility work is especially important when calories are lower. Stay hydrated.",
+          "sessions": [
+            {
+              "label": null,
+              "exercises": []
+            }
+          ]
+        },
+        {
+          "day": 4,
+          "dayName": "Thursday",
+          "title": "Upper Body Strength (Pull)",
+          "isRestDay": false,
+          "restNote": null,
+          "sessions": [
+            {
+              "label": null,
+              "exercises": [
+                {
+                  "name": "Deadlift",
+                  "prescription": "3 sets x 5 reps, 120 sec rest",
+                  "description": "Maintain heavy pulling. Strength is the key signal for muscle retention during a cut. Don't drop this lift."
+                },
+                {
+                  "name": "Weighted Pull-Ups",
+                  "prescription": "3 sets x 8 reps, 90 sec rest",
+                  "description": "Add belt weight if possible. Full hang to chin over bar. Cutting is not an excuse to lose pull-up strength."
+                },
+                {
+                  "name": "Seated Cable Row",
+                  "prescription": "3 sets x 10 reps, 60 sec rest",
+                  "description": "Elbows tight to body. Squeeze shoulder blades. 2 seconds pull, 3 seconds return. Feel the lats working."
+                },
+                {
+                  "name": "Face Pulls",
+                  "prescription": "3 sets x 15 reps, 45 sec rest",
+                  "description": "Critical during a cut for shoulder health. External rotation. High rep, light to moderate weight."
+                },
+                {
+                  "name": "Barbell Curl",
+                  "prescription": "3 sets x 10 reps, 60 sec rest",
+                  "description": "Maintain bicep training. Slow negative. No swinging or momentum at any point."
+                },
+                {
+                  "name": "Incline Dumbbell Curl",
+                  "prescription": "3 sets x 12 reps, 45 sec rest",
+                  "description": "Lie back on incline bench. Full stretch at bottom activates more bicep fibres. Very effective isolation."
+                },
+                {
+                  "name": "Cardio",
+                  "prescription": "1 x 25 minutes",
+                  "description": "Moderate pace jog or bike. Zone 2 heart rate (60\u201370% max). Burns calories without causing a cortisol spike."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "day": 5,
+          "dayName": "Friday",
+          "title": "Full Body Circuit",
+          "isRestDay": false,
+          "restNote": null,
+          "sessions": [
+            {
+              "label": null,
+              "exercises": [
+                {
+                  "name": "Squat to Press",
+                  "prescription": "4 sets x 12 reps, 45 sec rest",
+                  "description": "Dumbbell front squat into overhead press. Compound movement burns more calories and works multiple muscle groups."
+                },
+                {
+                  "name": "Push-Up Variations",
+                  "prescription": "3 sets x 15 reps, 45 sec rest",
+                  "description": "Mix standard, wide, and close-grip. Higher reps with bodyweight burns calories and maintains chest endurance."
+                },
+                {
+                  "name": "Pull-Up or Inverted Row",
+                  "prescription": "3 sets x 10 reps, 60 sec rest",
+                  "description": "Bodyweight pulling. For inverted row, lie under bar at 45 degrees and pull chest to bar."
+                },
+                {
+                  "name": "Dumbbell Complex",
+                  "prescription": "3 sets x 8 reps each movement, 75 sec rest",
+                  "description": "6 deadlift, 6 row, 6 curl, 6 press without putting the weight down. One of the most effective cutting tools."
+                },
+                {
+                  "name": "Hollow Body Hold",
+                  "prescription": "3 sets x 30 seconds, 30 sec rest",
+                  "description": "Lie flat, arms overhead, feet 15cm up. Lower back pressed flat. Harder than it looks. Build toward 60 seconds."
+                },
+                {
+                  "name": "Burpee Intervals",
+                  "prescription": "3 sets. Tabata style: 20 seconds maximum effort burpees, 10 seconds rest",
+                  "description": "8 rounds. Very effective for fat burning."
+                },
+                {
+                  "name": "Stretching",
+                  "prescription": "1 x 15 minutes full body stretch",
+                  "description": "Hold each position 30\u201345 seconds. Flexibility aids recovery when calories are reduced."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "day": 6,
+          "dayName": "Saturday",
+          "title": "Cardio & Core",
+          "isRestDay": false,
+          "restNote": null,
+          "sessions": [
+            {
+              "label": null,
+              "exercises": [
+                {
+                  "name": "Outdoor Run or Cycle",
+                  "prescription": "1 x 35 minutes",
+                  "description": "Steady-state Zone 2. Conversational pace. Burns fat efficiently without muscle breakdown when protein intake is high."
+                },
+                {
+                  "name": "Plank Variations",
+                  "prescription": "3 sets x 45 seconds each, 30 sec rest",
+                  "description": "Standard, side plank each side, reverse plank. Aim to increase hold time each week."
+                },
+                {
+                  "name": "Dead Bug",
+                  "prescription": "3 sets x 10 reps each side, 30 sec rest",
+                  "description": "Opposite arm and leg lower together while back stays flat. Excellent for deep core stability."
+                },
+                {
+                  "name": "Cable Woodchop",
+                  "prescription": "3 sets x 12 reps each side, 30 sec rest",
+                  "description": "High to low or low to high rotation. Rotate through torso. Builds oblique definition safely."
+                },
+                {
+                  "name": "Lying Leg Raise",
+                  "prescription": "3 sets x 15 reps, 30 sec rest",
+                  "description": "Lower back stays on floor. Legs lower slowly without touching floor. Add ankle weights when this becomes easy."
+                },
+                {
+                  "name": "Foam Rolling",
+                  "prescription": "1 x 15 minutes",
+                  "description": "Cover all major muscle groups: quads, hamstrings, lats, calves, thoracic spine. 30\u201360 seconds per area."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "day": 7,
+          "dayName": "Sunday",
+          "title": "Full Rest",
+          "isRestDay": true,
+          "restNote": "Complete rest. Eat your full calorie target, sleep 7\u20139 hours. Muscle is retained during recovery. Do not add extra cardio on rest days during a cut.",
+          "sessions": [
+            {
+              "label": null,
+              "exercises": []
+            }
+          ]
+        }
+      ],
+      "diet": {
+        "intro": "High protein is essential during a cut \u2014 it prevents muscle loss and keeps you full. Time carbohydrates around your workouts. Avoid crash dieting or dropping calories too low.",
+        "carbCycle": false,
+        "dailyMeals": [
+          {
+            "meal": "Breakfast",
+            "name": "Egg white omelette with spinach and wholemeal toast",
+            "items_note": "6 egg whites (2 whole), large handful spinach, 1\u20132 slices wholemeal toast. High protein, low fat, rich in iron and vitamins."
+          },
+          {
+            "meal": "Mid-Morning",
+            "name": "Protein shake and fruit",
+            "items_note": "1 scoop whey protein in water, 1 apple. Keeps protein high between meals without excess calories."
+          },
+          {
+            "meal": "Lunch",
+            "name": "Turkey breast with brown rice and steamed veg",
+            "items_note": "200g turkey breast, 80g dry brown rice, 200g vegetables. Lean protein, complex carbs, high volume and low calorie."
+          },
+          {
+            "meal": "Pre-Workout",
+            "name": "Banana and protein shake",
+            "items_note": "1 banana, half scoop protein. Carbs for training energy and protein to protect muscle during the session."
+          },
+          {
+            "meal": "Post-Workout",
+            "name": "Chicken breast and sweet potato",
+            "items_note": "180g chicken breast, 150g sweet potato. Replenish glycogen and spike muscle protein synthesis."
+          },
+          {
+            "meal": "Dinner",
+            "name": "White fish with asparagus and green beans",
+            "items_note": "220g cod or tilapia, 150g asparagus, green beans. Very low calorie, very high protein, highly nutrient dense."
+          },
+          {
+            "meal": "Evening",
+            "name": "Casein protein or low-fat cottage cheese",
+            "items_note": "1 scoop casein or 150g cottage cheese. Slow protein prevents overnight muscle breakdown."
+          }
+        ],
+        "foodsToAvoid": [
+          "High calorie condiments: mayonnaise, full-fat dressings, creamy sauces",
+          "Liquid calories: juice, smoothies, lattes \u2014 add calories invisibly",
+          "White bread, white pasta, white rice (except post-workout)",
+          "Cheese and full-fat dairy \u2014 very calorie dense on a deficit",
+          "Alcohol \u2014 7 calories per gram, no nutritional value, impairs fat burning for 24+ hours"
+        ],
+        "healthySnacks": [
+          "Celery with almond butter (1 tablespoon)",
+          "Boiled eggs \u2014 2 to 3 with hot sauce",
+          "Edamame \u2014 high protein and low calorie",
+          "Turkey slices rolled with cucumber",
+          "Low-calorie protein pudding"
+        ],
+        "supplements": []
+      }
+    },
+    {
+      "key": "shredding",
+      "name": "Shredding",
+      "blurb": "Competition-level leanness with twice-daily sessions and carb cycling.",
+      "description": "Shredding is the most intense goal. It requires an aggressive calorie deficit, twice-daily training on some days, carb cycling, and extreme dietary discipline. Not suitable for beginners. Please consult a GP before starting if you have any health conditions.",
+      "macros": {
+        "female": {
+          "label": "Female (~60kg):",
+          "kcal": "1,300",
+          "protein": "150",
+          "carbs": "90",
+          "fats": "35"
+        },
+        "male": {
+          "label": "Male (~80kg):",
+          "kcal": "1,750",
+          "protein": "210",
+          "carbs": "130",
+          "fats": "48"
+        },
+        "generalRule": null,
+        "highCarbDays": "Add 150\u2013200g carbs above baseline, timed around workouts.",
+        "lowCarbDays": "Reduce carbs by 100\u2013150g. Increase protein slightly. Fibrous veg only for carbohydrates."
+      },
+      "days": [
+        {
+          "day": 1,
+          "dayName": "Monday",
+          "title": "Morning Legs | Evening LISS Cardio",
+          "isRestDay": false,
+          "restNote": null,
+          "sessions": [
+            {
+              "label": "Morning session (weights, 60 minutes)",
+              "exercises": [
+                {
+                  "name": "Barbell Squat",
+                  "prescription": "5 sets x 5 reps, 120 sec rest",
+                  "description": "Maintain heavy strength. Preserves muscle on an aggressive deficit. Do not reduce this lift."
+                },
+                {
+                  "name": "Leg Press",
+                  "prescription": "4 sets x 12 reps, 75 sec rest",
+                  "description": "High volume after heavy squats. Full range of motion every rep. Don't lock knees at top."
+                },
+                {
+                  "name": "Hack Squat",
+                  "prescription": "3 sets x 15 reps, 60 sec rest",
+                  "description": "Quad isolation. Feet forward, close together. The quad burn should be intense."
+                },
+                {
+                  "name": "Romanian Deadlift",
+                  "prescription": "4 sets x 10 reps, 75 sec rest",
+                  "description": "Hamstring focus after quad work. Controlled tempo. Feel the full stretch at the bottom each rep."
+                },
+                {
+                  "name": "Lying Leg Curl",
+                  "prescription": "4 sets x 12 reps, 60 sec rest",
+                  "description": "Squeeze hard at top. 3-second negative. Hamstrings are critical for leg shape."
+                },
+                {
+                  "name": "Seated Calf Raises",
+                  "prescription": "4 sets x 25 reps, 30 sec rest",
+                  "description": "Seated for the soleus. Full range, pause at top. Calves need high volume and frequency to develop."
+                }
+              ]
+            },
+            {
+              "label": "Evening session (cardio, 45 minutes, at least 6 hours after morning)",
+              "exercises": [
+                {
+                  "name": "Incline Treadmill Walk",
+                  "prescription": "45 minutes at 12\u201315% incline, speed 5.5\u20136 km/h",
+                  "description": "Maximum fat burning zone. Do not hold handrails. Full leg engagement throughout."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "day": 2,
+          "dayName": "Tuesday",
+          "title": "Morning Chest & Triceps | Evening HIIT",
+          "isRestDay": false,
+          "restNote": null,
+          "sessions": [
+            {
+              "label": "Morning session (weights, 60 minutes)",
+              "exercises": [
+                {
+                  "name": "Flat Bench Press",
+                  "prescription": "4 sets x 8 reps, 75 sec rest",
+                  "description": "Keep pressing strength. 3-second negative for maximum muscle fibre engagement while in a deficit."
+                },
+                {
+                  "name": "Incline Dumbbell Press",
+                  "prescription": "3 sets x 12 reps, 60 sec rest",
+                  "description": "High-rep incline for upper chest. Controlled tempo throughout. No bouncing off chest."
+                },
+                {
+                  "name": "Pec Deck or Cable Fly",
+                  "prescription": "3 sets x 15 reps, 45 sec rest",
+                  "description": "Full peak contraction each rep. 2-second hold at the squeeze. Arms arc, they don't press."
+                },
+                {
+                  "name": "Close Grip Bench Press",
+                  "prescription": "3 sets x 10 reps, 60 sec rest",
+                  "description": "Hands 30cm apart. Elbows tight to ribs. Primary tricep compound for this session."
+                },
+                {
+                  "name": "Overhead Tricep Extension",
+                  "prescription": "3 sets x 12 reps, 45 sec rest",
+                  "description": "Both hands on one dumbbell overhead. Lower behind head, extend back up. Full range every rep."
+                },
+                {
+                  "name": "Tricep Pushdowns Drop Set",
+                  "prescription": "3 sets x 12 reps, 30 sec rest",
+                  "description": "Heavy 10 reps, drop weight 20%, 10 more, drop 20%, to failure. Extremely effective for definition."
+                }
+              ]
+            },
+            {
+              "label": "Evening session (HIIT, 25 minutes)",
+              "exercises": [
+                {
+                  "name": "Sprint Intervals",
+                  "prescription": "8 rounds: 30 seconds maximum sprint, 90 seconds rest",
+                  "description": "Go all out every sprint. Do not reduce effort \u2014 full speed each time."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "day": 3,
+          "dayName": "Wednesday",
+          "title": "Back, Biceps & Core",
+          "isRestDay": false,
+          "restNote": null,
+          "sessions": [
+            {
+              "label": null,
+              "exercises": [
+                {
+                  "name": "Deadlift",
+                  "prescription": "4 sets x 5 reps, 120 sec rest",
+                  "description": "Maintain this lift at all costs during a shred. Greatest muscle engagement per rep of any exercise."
+                },
+                {
+                  "name": "Weighted Pull-Ups",
+                  "prescription": "4 sets x 8 reps, 90 sec rest",
+                  "description": "Add weight if possible. Full hang, chin over bar. Best lat builder and critical for a wide-back shredded physique."
+                },
+                {
+                  "name": "T-Bar Row",
+                  "prescription": "3 sets x 10 reps, 75 sec rest",
+                  "description": "Mid-back thickness. Elbows drive back, not up. Chest on pad. Squeeze fully and lower controlled."
+                },
+                {
+                  "name": "Wide Lat Pulldown",
+                  "prescription": "3 sets x 12 reps, 60 sec rest",
+                  "description": "Wide overhand grip. Pull to upper chest, lean back slightly. Stretch fully at top each rep."
+                },
+                {
+                  "name": "Incline Dumbbell Curl",
+                  "prescription": "3 sets x 12 reps, 60 sec rest",
+                  "description": "Full stretch activates more fibres. Supinate as you curl. Squeeze hard at top."
+                },
+                {
+                  "name": "Concentration Curl",
+                  "prescription": "3 sets x 15 reps, 45 sec rest",
+                  "description": "Elbow on inner thigh. Curl slowly to peak contraction. Best isolation for bicep peak development."
+                },
+                {
+                  "name": "Plank to Pike",
+                  "prescription": "3 sets x 10 reps, 45 sec rest",
+                  "description": "Start in plank, push hips to sky (downward dog), return. Intense core and shoulder combination."
+                },
+                {
+                  "name": "V-Ups",
+                  "prescription": "3 sets x 15 reps, 30 sec rest",
+                  "description": "Lie flat, simultaneously raise arms and legs to form a V shape. Keep arms and legs straight if possible. Slow return."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "day": 4,
+          "dayName": "Thursday",
+          "title": "Morning Shoulders | Evening LISS Cardio",
+          "isRestDay": false,
+          "restNote": null,
+          "sessions": [
+            {
+              "label": "Morning session (weights, 50 minutes)",
+              "exercises": [
+                {
+                  "name": "Seated Dumbbell Press",
+                  "prescription": "4 sets x 8 reps, 75 sec rest",
+                  "description": "Heavy overhead pressing to retain shoulder mass. Don't sacrifice shoulder size during the shred."
+                },
+                {
+                  "name": "Arnold Press",
+                  "prescription": "3 sets x 10 reps, 60 sec rest",
+                  "description": "Rotation gives full deltoid engagement. Very effective for roundness and separation between heads."
+                },
+                {
+                  "name": "Lateral Raise Drop Set",
+                  "prescription": "3 sets, 45 sec rest",
+                  "description": "Standard weight to failure, drop 20%, to failure, drop 20%, to failure. Extreme metabolic stress on side delts."
+                },
+                {
+                  "name": "Cable Lateral Raise",
+                  "prescription": "3 sets x 15 reps each arm, 30 sec rest",
+                  "description": "One arm at a time. Constant cable tension is superior to dumbbells for delt separation."
+                },
+                {
+                  "name": "Reverse Pec Deck",
+                  "prescription": "3 sets x 15 reps, 45 sec rest",
+                  "description": "Rear delt isolation. Essential for balanced shoulder development and good posture."
+                },
+                {
+                  "name": "Barbell Shrugs",
+                  "prescription": "3 sets x 20 reps, 45 sec rest",
+                  "description": "Higher reps during a shred. Keep traps engaged. Straight up, don't roll shoulders forward."
+                }
+              ]
+            },
+            {
+              "label": "Evening session (LISS, 45 minutes)",
+              "exercises": [
+                {
+                  "name": "Cycling or Swimming",
+                  "prescription": "45 minutes at moderate pace",
+                  "description": "Low impact, ideal for recovery days from heavy lifting. Non-weight bearing protects joints under training stress."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "day": 5,
+          "dayName": "Friday",
+          "title": "Full Body Metabolic Circuit",
+          "isRestDay": false,
+          "restNote": null,
+          "sessions": [
+            {
+              "label": null,
+              "exercises": [
+                {
+                  "name": "Barbell Complex",
+                  "prescription": "5 sets x 6 reps per movement, 90 sec rest",
+                  "description": "6 deadlift, 6 bent row, 6 hang clean, 6 front squat, 6 press. Do NOT put bar down. One weight throughout."
+                },
+                {
+                  "name": "Dumbbell Thruster",
+                  "prescription": "4 sets x 12 reps, 60 sec rest",
+                  "description": "DB front squat into overhead press. Continuous movement. One of the highest calorie burn exercises per minute."
+                },
+                {
+                  "name": "Pull-Up to Knee Raise",
+                  "prescription": "3 sets x 10 reps, 75 sec rest",
+                  "description": "Full pull-up at top, hold, raise knees to chest, lower. Extreme combination of core and back work."
+                },
+                {
+                  "name": "Box Jump to Step Down",
+                  "prescription": "4 sets x 10 reps, 60 sec rest",
+                  "description": "Explode onto box. Step down \u2014 do not jump \u2014 to protect the Achilles on high volume. Reset and repeat."
+                },
+                {
+                  "name": "Renegade Row Push-Up",
+                  "prescription": "3 sets x 8 reps each side, 60 sec rest",
+                  "description": "Plank with dumbbells. Push-up, row left, push-up, row right. Hips must stay perfectly still."
+                },
+                {
+                  "name": "Hollow Body Hold",
+                  "prescription": "3 sets x 45 seconds, 30 sec rest",
+                  "description": "Arms extended back, legs 15cm up, lower back pressed flat. Core endurance is essential at this level."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "day": 6,
+          "dayName": "Saturday",
+          "title": "Morning HIIT | Afternoon Flexibility",
+          "isRestDay": false,
+          "restNote": null,
+          "sessions": [
+            {
+              "label": "Morning session (HIIT, 30 minutes)",
+              "exercises": [
+                {
+                  "name": "Sprint or Assault Bike",
+                  "prescription": "10 rounds: 40 seconds maximum effort, 20 seconds rest",
+                  "description": "Assault bike or sprints. 40 seconds of absolute maximum every round. No holding back."
+                },
+                {
+                  "name": "Burpee Intervals",
+                  "prescription": "5 rounds: 20 seconds on, 10 seconds off",
+                  "description": "Tabata protocol. One of the most effective fat burning protocols in sports science."
+                }
+              ]
+            },
+            {
+              "label": "Afternoon session (flexibility, 45 minutes)",
+              "exercises": [
+                {
+                  "name": "Yoga Flow or Full Stretch",
+                  "prescription": "45 minutes",
+                  "description": "Hip flexors, hamstrings, quads, shoulders, chest. Hold 45\u201360 seconds each. Full recovery is mandatory at this intensity level."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "day": 7,
+          "dayName": "Sunday",
+          "title": "Full Rest \u2014 Mandatory",
+          "isRestDay": true,
+          "restNote": "Complete rest. This is not optional. The twice-daily sessions earlier in the week require a full rest day for the central nervous system to recover. Sleep, eat well and prepare for next week.",
+          "sessions": [
+            {
+              "label": null,
+              "exercises": []
+            }
+          ]
+        }
+      ],
+      "diet": {
+        "intro": "Carb cycling means eating high carbs on training days and low carbs on rest days. Protein stays high on all days. This preserves muscle while aggressively targeting body fat.",
+        "carbCycle": true,
+        "trainingDayMeals": [
+          {
+            "meal": "Breakfast",
+            "name": "Egg whites, oats and berries",
+            "items_note": "8 egg whites, 80g oats, 100g blueberries. High protein and complex carbs for the hard training day ahead."
+          },
+          {
+            "meal": "Mid-Morning",
+            "name": "Protein shake and rice cakes",
+            "items_note": "1.5 scoops whey, 4 rice cakes with almond butter. Sustained energy and protein for training."
+          },
+          {
+            "meal": "Lunch",
+            "name": "Chicken and rice",
+            "items_note": "220g chicken breast, 150g white rice, broccoli, soy sauce. Lean protein and fast carbs. Classic shredding meal."
+          },
+          {
+            "meal": "Pre-Workout",
+            "name": "Banana and BCAAs",
+            "items_note": "1 banana, 10g BCAAs in water. Simple carbs spike energy and BCAAs protect muscle during intense training."
+          },
+          {
+            "meal": "Post-Workout",
+            "name": "Whey and dextrose",
+            "items_note": "2 scoops whey, 50g dextrose powder in water. Immediate muscle protein synthesis and glycogen replenishment."
+          },
+          {
+            "meal": "Dinner",
+            "name": "Turkey and sweet potato",
+            "items_note": "200g turkey mince, 150g sweet potato, asparagus. Moderate carbs and very high protein."
+          },
+          {
+            "meal": "Pre-Sleep",
+            "name": "Casein shake",
+            "items_note": "1.5 scoops casein protein in water. 7\u20138 hours of slow-release amino acids protecting muscle during sleep."
+          }
+        ],
+        "restDayMeals": [
+          {
+            "meal": "Breakfast",
+            "name": "Whole eggs and smoked salmon",
+            "items_note": "4 whole eggs, 100g smoked salmon, spinach. High fat and protein, zero carbs, enters fat burning mode immediately."
+          },
+          {
+            "meal": "Mid-Morning",
+            "name": "Almonds and string cheese",
+            "items_note": "30g almonds, 2 cheese sticks. Healthy fats, protein, zero carbs. Very filling for hunger management."
+          },
+          {
+            "meal": "Lunch",
+            "name": "Tuna salad with olive oil and avocado",
+            "items_note": "2 cans tuna, large mixed salad, half avocado, olive oil dressing. High protein, healthy fats, negligible carbs."
+          },
+          {
+            "meal": "Afternoon",
+            "name": "Protein shake in water",
+            "items_note": "1.5 scoops whey in water only. Pure protein, no carbs, no fat. Keep protein high all day on low carb days."
+          },
+          {
+            "meal": "Dinner",
+            "name": "Steak and green vegetables",
+            "items_note": "200g lean rump steak, green beans, broccoli, spinach. Red meat protein, zero carb vegetables, iron dense."
+          },
+          {
+            "meal": "Evening",
+            "name": "Cottage cheese and walnuts",
+            "items_note": "150g cottage cheese, 20g walnuts. Casein protein and omega-3 fats, minimal carbs, slow digestion for overnight recovery."
+          }
+        ],
+        "foodsToAvoid": [
+          "Any added sugar in any form \u2014 sauces, condiments, drinks, seasonings",
+          "Alcohol \u2014 completely eliminates fat burning for 24\u201348 hours",
+          "Fruit juice \u2014 liquid fructose spikes insulin and stalls fat loss",
+          "Bread, pasta and cereals on rest days \u2014 even wholemeal",
+          "Cheat meals \u2014 even one can set back a week of progress at this stage",
+          "High-sodium processed foods \u2014 causes water retention and masks progress"
+        ],
+        "supplements": [
+          "Whey Protein Isolate \u2014 2 to 3 servings daily to hit protein target",
+          "BCAAs \u2014 intra-workout on low carb days to prevent muscle breakdown",
+          "Creatine Monohydrate \u2014 5g daily, maintains strength on a deficit",
+          "Caffeine or pre-workout \u2014 improves performance and fat mobilisation",
+          "Omega-3 Fish Oil \u2014 3g daily for inflammation and joint health",
+          "Vitamin D and Zinc \u2014 supports testosterone, immune function and mood"
+        ],
+        "healthySnacks": []
+      }
+    }
+  ]
+}

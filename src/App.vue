@@ -1,10 +1,12 @@
 <script setup lang="ts">
-import { watch, nextTick, ref } from 'vue'
+import { watch, nextTick, ref, onMounted } from 'vue'
 import { useProfileStore } from './stores/profile'
+import { useAuthStore } from './stores/auth'
 import { RouterView, RouterLink, useRoute, useRouter } from 'vue-router'
 import EmberField from './components/EmberField.vue'
 
 const store = useProfileStore()
+const auth = useAuthStore()
 const route = useRoute()
 const router = useRouter()
 
@@ -12,6 +14,18 @@ function restart() {
   store.reset()
   router.push('/')
 }
+
+function logout() {
+  auth.logout()
+  router.push('/')
+}
+
+onMounted(async () => {
+  await auth.restoreSession()
+  if (auth.isAuthenticated) {
+    await store.syncFromServer()
+  }
+})
 
 // Move focus to the main landmark on every navigation so keyboard and
 // screen-reader users aren't left stranded on the old page's last focus point.
@@ -34,10 +48,17 @@ watch(
         </span>
         <span class="brand-name">IRONFORGE<span class="brand-sub">CROSSFIT</span></span>
       </RouterLink>
-      <nav v-if="store.isOnboarded" class="nav">
-        <RouterLink to="/dashboard">Dashboard</RouterLink>
-        <RouterLink to="/diet">Diet</RouterLink>
-        <button class="reset-btn" @click="restart">Restart</button>
+      <nav class="nav">
+        <template v-if="store.isOnboarded">
+          <RouterLink to="/dashboard">Dashboard</RouterLink>
+          <RouterLink to="/diet">Diet</RouterLink>
+          <button class="reset-btn" @click="restart">Restart</button>
+        </template>
+        <span v-if="auth.isAuthenticated" class="account">
+          {{ auth.user?.name }}
+          <button class="reset-btn" @click="logout">Sign out</button>
+        </span>
+        <RouterLink v-else to="/login" class="sign-in-link">Sign in</RouterLink>
       </nav>
     </header>
     <main ref="mainRef" tabindex="-1">
@@ -132,6 +153,31 @@ watch(
 }
 
 .nav a.router-link-active {
+  color: var(--ember-soft);
+}
+
+.account {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text-dim);
+  font-size: 0.8rem;
+}
+
+.sign-in-link {
+  text-decoration: none;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.8rem;
+  border: 1px solid var(--border);
+  padding: 6px 12px;
+  border-radius: var(--radius);
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.sign-in-link:hover {
+  border-color: var(--ember);
   color: var(--ember-soft);
 }
 

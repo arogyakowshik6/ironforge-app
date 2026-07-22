@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useProfileStore } from '../stores/profile'
+import { useAuthStore } from '../stores/auth'
 import GaugeChart from '../components/GaugeChart.vue'
 import MacroBars from '../components/MacroBars.vue'
 import AnimatedNumber from '../components/AnimatedNumber.vue'
@@ -8,6 +9,7 @@ import EquipmentIcon from '../components/EquipmentIcon.vue'
 import { dashboardImage } from '../data/images'
 
 const store = useProfileStore()
+const auth = useAuthStore()
 const profile = computed(() => store.profile!)
 const result = computed(() => store.result!)
 const programme = computed(() => store.programme!)
@@ -34,6 +36,11 @@ function dayDone(day: number) {
         <p class="lede">{{ programme.description }}</p>
       </div>
     </section>
+
+    <RouterLink v-if="!auth.isAuthenticated" to="/login" class="sync-prompt" v-reveal>
+      <span>Your plan is only saved on this device right now.</span>
+      <span class="sync-cta">Sign in to sync it →</span>
+    </RouterLink>
 
     <section class="progress-banner" v-reveal>
       <div class="progress-head">

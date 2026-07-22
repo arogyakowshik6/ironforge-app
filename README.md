@@ -4,6 +4,30 @@ A Vue 3 + TypeScript app that turns a 12-question onboarding flow into a persona
 training and nutrition programme: TDEE/BMI calculation, macro targets, and a full
 7-day workout + diet plan across four goals (Weight Loss, Bulking, Cutting, Shredding).
 
+## Backend (`server/`)
+
+The frontend works standalone (localStorage-only, guest mode) or connected to
+the API in `server/` for persistent, per-user accounts — closes
+[issue #1](../../issues/1). See **[server/README.md](server/README.md)** for
+full setup (Docker Compose Postgres, Prisma, migrations, seeding) and an
+honest note on what was and wasn't executable in the environment this was
+built in.
+
+Quick version:
+
+```bash
+docker compose up -d          # from the repo root — starts Postgres
+cd server
+npm install && cp .env.example .env
+npx prisma generate && npx prisma migrate deploy
+npm run seed
+npm run dev          # API on :4000
+```
+
+Then in the frontend, copy `.env.example` to `.env` (defaults already point
+at `localhost:4000`) and sign in from the app's "Sign in" link. Without a
+running API, the app degrades gracefully to local-only mode — nothing breaks.
+
 ## Testing
 
 Unit tests cover the calculation logic (`useCalculator.ts`) — BMR/TDEE formulas,
@@ -32,8 +56,8 @@ npm run test:watch  # watch mode
 - **Vue 3** (Composition API, `<script setup>`)
 - **TypeScript**
 - **Vite**
-- **Pinia** — profile + exercise-completion state, persisted to `localStorage`
-- **Vue Router** — onboarding → dashboard → day detail → diet plan, with page transitions
+- **Pinia** — profile + exercise-completion state, persisted to `localStorage` and synced to the API when signed in
+- **Vue Router** — onboarding → dashboard → day detail → diet plan → sign in, with page transitions
 - Self-hosted fonts via `@fontsource` (Anton, Space Grotesk, Space Mono — no Google Fonts CDN request)
 - Custom design system (no UI framework) — see `src/style.css` for tokens
 
@@ -84,17 +108,23 @@ src/
   composables/
     useCalculator.ts        # BMR/TDEE/macro calculation logic
   stores/
-    profile.ts               # Pinia store (user profile + derived results)
+    profile.ts               # Pinia store (user profile + derived results, API sync)
+    auth.ts                  # Pinia store (JWT session, login/register/restore)
+  lib/
+    api.ts                    # fetch wrapper for the server/ API
   data/
     programmes.json          # structured workout/diet content (4 programmes x 7 days)
   views/
     OnboardingView.vue       # 6-step onboarding wizard (12 data points)
+    AuthView.vue              # sign in / register (optional — app works without it)
     DashboardView.vue        # calorie gauge, macro split, week overview
     DayView.vue               # per-day workout detail
     DietView.vue               # meal plan, foods to avoid, snacks/supplements
   components/
     GaugeChart.vue            # radial calorie-vs-TDEE gauge (signature visual)
     MacroBars.vue              # protein/carb/fat breakdown
+
+server/                      # Express + Prisma + Postgres API — see server/README.md
 ```
 
 ## Notes
